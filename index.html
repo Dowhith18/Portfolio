@@ -481,12 +481,14 @@
       // Create a temporary link element
       const link = document.createElement('a');
       
-      // Set the path to your PDF file in the git folder
-      // Adjust this path based on your actual file structure
-      link.href = './Dowhith.pdf'; // or '../Dowhith.pdf' if it's in the parent directory
+      // GitHub raw file URL for direct download
+      link.href = 'https://github.com/Dowhith18/Portfolio/raw/main/Dowhith.pdf';
       
       // Set the download attribute with the desired filename
       link.download = 'Dowhith_Ansari_Resume.pdf';
+      
+      // Set target to blank to handle potential CORS issues
+      link.target = '_blank';
       
       // Set the link to be hidden
       link.style.display = 'none';
@@ -498,7 +500,7 @@
       
       // Optional: Show a confirmation message
       setTimeout(() => {
-        alert('Resume download initiated! If the download didn\'t start, please check if the PDF file exists in the correct location.');
+        console.log('Resume download initiated from GitHub repository');
       }, 100);
     }
   </script>
