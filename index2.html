@@ -124,6 +124,44 @@
       transform: translateY(-2px);
     }
 
+    .download-resume-btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 20px 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 0, 255, 0.3);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-resume-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 0, 255, 0.5);
+    }
+
+    .download-resume-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .download-resume-btn:hover:before {
+      left: 100%;
+    }
+
     .section {
       margin-bottom: 50px;
       padding: 40px;
@@ -284,6 +322,12 @@
           <a href="https://linkedin.com/in/dowhithansari" class="contact-item" target="_blank">💼 LinkedIn</a>
           <a href="https://github.com/Dowhith18" class="contact-item" target="_blank">⚡ GitHub</a>
         </div>
+        <!-- Download Resume Button -->
+        <div style="margin-top: 30px;">
+          <button class="download-resume-btn" onclick="downloadResume()">
+            📄 Print Resume
+          </button>
+        </div>
       </div>
 
       <!-- About Section -->
@@ -429,6 +473,33 @@
     <video id="video-2" muted loop autoplay width="0" height="0"
       src="../static/textures/monitor/video/static-texture-layer.mp4" style="opacity: 0;"></video>
   </div>
+
+  <script>
+    function downloadResume() {
+      // Create a temporary link element
+      const link = document.createElement('a');
+      
+      // Set the path to your PDF file in the git folder
+      // Adjust this path based on your actual file structure
+      link.href = './Dowhith.pdf'; // or '../Dowhith.pdf' if it's in the parent directory
+      
+      // Set the download attribute with the desired filename
+      link.download = 'Dowhith_Ansari_Resume.pdf';
+      
+      // Set the link to be hidden
+      link.style.display = 'none';
+      
+      // Append to body, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      // Optional: Show a confirmation message
+      setTimeout(() => {
+        alert('Resume download initiated! If the download didn\'t start, please check if the PDF file exists in the correct location.');
+      }, 100);
+    }
+  </script>
 </body>
 
 </html>
