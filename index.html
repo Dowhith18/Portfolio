@@ -1,82 +1,706 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dowhith Ansari | Technical Author</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-    }
-    header {
-      background-color: #002147;
-      color: white;
-      padding: 2rem;
-    }
-    .section-title {
-      border-bottom: 2px solid #002147;
-      margin-bottom: 1rem;
-    }
-    footer {
-      background: #f8f9fa;
-      text-align: center;
-      padding: 1rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dowhith Ansari - Technical Author Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #f1f5f9;
+            --border-color: #e5e7eb;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-light);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        main {
+            background: var(--bg-primary);
+            margin-top: -40px;
+            border-radius: 40px 40px 0 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: var(--bg-primary);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .job-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: var(--bg-accent);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateX(10px);
+        }
+
+        .degree {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .institution {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .grade {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Project Section */
+        .project-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-achievement {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-stat {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-container,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-  <header class="text-center">
-    <h1>Dowhith Ansari S</h1>
-    <p>Technical Author - Vehicle Diagnostics & Wiring Manual</p>
-    <p>Email: <a href="mailto:dowhithansari18@gmail.com" class="text-white">dowhithansari18@gmail.com</a> | Phone: +91 8610938195</p>
-    <p>
-      <a href="https://linkedin.com/in/dowhithansari" class="text-white me-3">LinkedIn</a>
-      <a href="https://github.com/Dowhith18" class="text-white">GitHub</a>
-    </p>
-  </header>
+    <header>
+        <nav class="container">
+            <div class="logo">Dowhith Ansari</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="container my-5">
-    <section>
-      <h2 class="section-title">Work Experience</h2>
-      <ul>
-        <li><strong>Technical Author</strong> - Kattrapin Technologies Pvt Ltd (Aug 2024 – Present)<br>Client: Ford GTBC - Wiring Diagrams, WSM, Diagnostic Procedures (PC/ED), QA, and documentation support.</li>
-        <li><strong>Technical Author</strong> - 24x7 HI RES Services Pvt Ltd (Sep 2022 – Jul 2024)<br>Client: Mahindra Research Valley - SOP manuals, Arbortext, Windchill, Adobe Illustrator.</li>
-        <li><strong>Testing Engineer</strong> - Avalon Technologies Ltd (Oct 2020 – Sep 2022)<br>Testing cables, assemblies, QA, and compliance documentation.</li>
-      </ul>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Dowhith Ansari</h1>
+                <p class="subtitle">Technical Author - Vehicle Diagnostics & Wiring Manual</p>
+                <p class="description">
+                    Dedicated and skilled Automotive Technical Author with over 4 years of experience in authoring Wiring Diagrams, 
+                    Diagnostics Manuals, and Service Literature for leading OEMs like Ford and Mahindra. Proficient in creating clear, 
+                    accurate, and globally standardized service information.
+                </p>
+                <div class="contact-info">
+                    <a href="mailto:dowhithansari18@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>dowhithansari18@gmail.com</span>
+                    </a>
+                    <a href="tel:+918610938195" class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 8610938195</span>
+                    </a>
+                    <a href="https://linkedin.com/in/dowhithansari" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>dowhithansari</span>
+                    </a>
+                    <a href="https://github.com/Dowhith18" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>Dowhith18</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-      <h2 class="section-title">Project</h2>
-      <p><strong>Wireless Charging System</strong> – Achieved 85% power transfer efficiency at variable coil separations.</p>
-    </section>
+    <main>
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="experience-grid">
+                    <div class="job-card fade-in-up">
+                        <div class="job-header">
+                            <h3 class="job-title">WSM Technical Author</h3>
+                            <div class="company">Kattrapin Technologies Pvt Ltd</div>
+                            <div class="job-meta">
+                                <span><i class="fas fa-calendar"></i> August 2024 – Present</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Sholinganallur</span>
+                            </div>
+                            <p><strong>Client:</strong> Ford GTBC Chennai</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Author and revise Wiring Diagrams (WD), Service Literature (WSM), and Diagnostic Procedures (PC/ED) for Ford global platforms</li>
+                            <li>Ensure content complies with Ford Global Authoring Guidelines and ODYSSEY/World Server standards</li>
+                            <li>Review engineering inputs (CAD models, 3D data, design specs) and transform into clear service information</li>
+                            <li>Use X-Metal, Arbortext Editor 7.1, Adobe Illustrator, Teamcenter, and ODYSSEY for content creation</li>
+                            <li>Ensure timely delivery with >95% accuracy for Owner Manuals, Wiring Diagrams, and Diagnostic Procedures</li>
+                            <li>Lead regular RAP case reviews to track content quality and resolve feedback</li>
+                        </ul>
+                    </div>
 
-    <section>
-      <h2 class="section-title">Technical Skills & Tools</h2>
-      <ul>
-        <li>Adobe Illustrator, Arbortext Editor & Styler, X-Metal</li>
-        <li>PTS, EPC Systems, PTC Windchill, Teamcenter</li>
-        <li>NX 2306, Catia Composer, CHS, CMS</li>
-        <li>HTML/CSS, JavaScript</li>
-      </ul>
-    </section>
+                    <div class="job-card fade-in-up">
+                        <div class="job-header">
+                            <h3 class="job-title">Technical Author</h3>
+                            <div class="company">24x7 HI RES Services Pvt Ltd</div>
+                            <div class="job-meta">
+                                <span><i class="fas fa-calendar"></i> September 2022 - July 2024</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Maraimalai Nagar</span>
+                            </div>
+                            <p><strong>Client:</strong> Mahindra Research Valley</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed and revised Wiring Manuals and Diagnostic Manuals ensuring adherence to SOPs</li>
+                            <li>Analyzed intricate 3D CAD designs and translated them into comprehensive manual updates</li>
+                            <li>Demonstrated advanced proficiency in Arbortext Editor 7.1 and Styler software</li>
+                            <li>Leveraged PTC Windchill and Team Center 11 for efficient product lifecycle data management</li>
+                            <li>Developed repair SOPs with vivid illustrations using Adobe Illustrator</li>
+                            <li>Utilized Electronic Parts Catalogue System for accurate component representation</li>
+                        </ul>
+                    </div>
 
-    <section>
-      <h2 class="section-title">Education</h2>
-      <ul>
-        <li><strong>B.CA in Data Science</strong> – SRM Institute (Expected 2026) – CGPA: 8.5</li>
-        <li><strong>Diploma in EEE</strong> – AL-Ameen Polytechnic College (2017–2020) – 85%</li>
-      </ul>
-    </section>
+                    <div class="job-card fade-in-up">
+                        <div class="job-header">
+                            <h3 class="job-title">Testing Engineer</h3>
+                            <div class="company">Avalon Technologies Limited</div>
+                            <div class="job-meta">
+                                <span><i class="fas fa-calendar"></i> October 2020 - September 2022</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Chennai</span>
+                            </div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Verified and documented test results for quality control and compliance</li>
+                            <li>Applied analytical skills to troubleshoot test failures and implement corrective actions</li>
+                            <li>Handled various cable and wire harness types: Flat ribbon, RF cable, Potting, Electro-Mechanical</li>
+                            <li>Conducted Continuity & Hi-Pot Testing, Radio Frequency Testing</li>
+                            <li>Applied IPC 620 Standard and MIL SPEC Harness Standards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-      <h2 class="section-title">Languages</h2>
-      <p>Tamil (Native), English (Fluent), Hindi (Conversational)</p>
-    </section>
-  </main>
+        <section id="skills" class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Technical Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adobe Illustrator</span>
+                            <span class="skill-tag">Arbortext Editor 7.1</span>
+                            <span class="skill-tag">X-Metal</span>
+                            <span class="skill-tag">ODYSSEY</span>
+                            <span class="skill-tag">PTS</span>
+                            <span class="skill-tag">PTC Windchill</span>
+                            <span class="skill-tag">Team Center 14.3</span>
+                            <span class="skill-tag">NX 2306</span>
+                            <span class="skill-tag">Catia Composer</span>
+                            <span class="skill-tag">Mentor Capital Harness</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> Core Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Technical Documentation</span>
+                            <span class="skill-tag">CAD Analysis</span>
+                            <span class="skill-tag">Quality Assurance</span>
+                            <span class="skill-tag">Diagnostic Procedures</span>
+                            <span class="skill-tag">Wiring Diagrams</span>
+                            <span class="skill-tag">Service Literature</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-language"></i> Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Tamil (Native)</span>
+                            <span class="skill-tag">English (Fluent)</span>
+                            <span class="skill-tag">Hindi (Conversational)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Dowhith Ansari S</p>
-  </footer>
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <h3 class="degree">B.CA in Data Science</h3>
+                        <div class="institution">S.R.M. Institute of Sciences and Technology</div>
+                        <div class="education-meta">
+                            <i class="fas fa-calendar"></i> Expected 2026 | 
+                            <i class="fas fa-map-marker-alt"></i> Kattankulathur Campus
+                        </div>
+                        <div class="grade">First Year CGPA: 8.5</div>
+                    </div>
+                    <div class="education-card">
+                        <h3 class="degree">Diploma in Electrical and Electronics Engineering</h3>
+                        <div class="institution">AL-Ameen Polytechnic College</div>
+                        <div class="education-meta">
+                            <i class="fas fa-calendar"></i> 2017 - 2020 | 
+                            <i class="fas fa-map-marker-alt"></i> Erode
+                        </div>
+                        <div class="grade">Overall Percentage: 85%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="project" class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="section-title">Featured Project</h2>
+                <div class="project-card">
+                    <h3 class="project-title"><i class="fas fa-bolt"></i> Wireless Charging System Development</h3>
+                    <p class="project-achievement">
+                        Successfully developed an experimental prototype achieving 
+                        <span class="achievement-stat">85%</span> 
+                        Power Transfer Efficiency in Variable Coil Separations
+                    </p>
+                    <p>This project demonstrates expertise in electrical engineering principles and innovative problem-solving in power transfer technology.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-contact">
+                <a href="mailto:dowhithansari18@gmail.com">
+                    <i class="fas fa-envelope"></i> dowhithansari18@gmail.com
+                </a>
+                <a href="tel:+918610938195">
+                    <i class="fas fa-phone"></i> +91 8610938195
+                </a>
+                <a href="https://linkedin.com/in/dowhithansari">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/Dowhith18">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            <p>&copy; 2024 Dowhith Ansari. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.job-card, .skill-category, .education-card, .project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
 </body>
 </html>
